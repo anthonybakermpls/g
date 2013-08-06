@@ -1,0 +1,54 @@
+# depslib dependency file v1.0
+1375587262 source:/home/anthony/Code/g1/main.cpp
+	<iostream>
+	<string>
+	<vector>
+	<algorithm>
+	<iterator>
+	<sstream>
+	<map>
+	<cstdlib>
+	<cerrno>
+	<exception>
+	<unistd.h>
+	<ctime>
+
+1375661747 source:/home/anthony/Code/g1/src/command_line.cpp
+	"command_line.h"
+	<algorithm>
+	<iostream>
+	<iterator>
+	<sstream>
+	<chrono>
+	<ctime>
+
+1375649348 /home/anthony/Code/g1/include/command_line.h
+	<functional>
+	<string>
+	<vector>
+	<map>
+
+1375670281 source:/home/anthony/Code/g1/src/main.cpp
+	<iostream>
+	<string>
+	<vector>
+	<chrono>
+	<ctime>
+	<ratio>
+	"command_line.h"
+	"character.h"
+
+1375662437 source:/home/anthony/Code/g1/src/character.cpp
+	"character.h"
+	<iostream>
+
+1375671527 /home/anthony/Code/g1/include/character.h
+	<map>
+	<string>
+	<vector>
+	"item.h"
+
+1375671517 /home/anthony/Code/g1/include/item.h
+	<string>
+	<map>
+
