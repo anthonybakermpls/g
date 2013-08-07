@@ -1,0 +1,19 @@
+<!-- comment -->
+<items>
+                <item>
+                                <name>Item 1</name>
+                                <description>An item.</description>
+                                <type>type 1</type>
+                                <subtype>subtype 1</subtype>
+                                <bonus>
+                                </bonus>
+                </item>
+                <item>
+                                <name>Item 2</name>
+                                <description>An item.</description>
+                                <type>type 1</type>
+                                <subtype>subtype 2</subtype>
+                                <bonus>
+                                </bonus>           
+                </item>
+</items>
