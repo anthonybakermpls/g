@@ -1,11 +1,11 @@
 #include "item.h"
 
-#include "../lib/tinyxml2-master/tinyxml2.h"
+
 
 
 Item::Item()
 {
-  //ctor
+
 }
 
 Item::~Item()

@@ -7,8 +7,8 @@
 #include <ctime>
 #include <ratio>
 
-
-
+/// external libraries
+#include "../lib/tinyxml2-master/tinyxml2.h"
 
 #include "command_line.h"
 #include "character.h"
@@ -69,6 +69,30 @@ int main()
   f = bind( &Character::status, &player, placeholders::_1);
   command_line.register_function2("status",f);
 
+
+  tinyxml2::XMLDocument doc;
+  doc.LoadFile( "cfg/items.xml" );
+  if(doc.ErrorID() != 0)
+    doc.PrintError();
+
+//	doc.Parse( xml );
+//	cout << "XML parsing ErrorID(): " << doc.ErrorID() << endl;
+
+//  cout << endl;
+//  cout << "Printing items. " << endl;
+//  cout << "----------------------" << endl;
+
+  const char* c;
+  string str;
+  tinyxml2::XMLElement *levelElement = doc.FirstChildElement(); // items   //cout << levelElement->Name();
+
+
+  for (tinyxml2::XMLElement* child = levelElement->FirstChildElement(); child != NULL; child = child->NextSiblingElement())
+  {
+    c = child->FirstChildElement("name")->GetText();
+    str=c;
+    cout << "Item Name: " << str << endl;
+  }
 
 
 
