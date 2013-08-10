@@ -33,6 +33,9 @@
 			<Add option="-Wall" />
 			<Add directory="include" />
 		</Compiler>
+		<Linker>
+			<Add library="lib/tinyxml2-master/tinyxml2/tinyxml2-cbp/bin/Release/libtinyxml2.a" />
+		</Linker>
 		<Unit filename="include/character.h" />
 		<Unit filename="include/command_line.h" />
 		<Unit filename="include/item.h" />
