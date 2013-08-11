@@ -22,6 +22,7 @@ class Command_line
     void register_function2(string, function<void(vector<string>)> );
 
     void help(vector<string>);
+    void quit(vector<string>);
 
   protected:
   private:
@@ -30,7 +31,7 @@ class Command_line
     size_t num_args;
     string name;
     string line;
-    bool user_exit;
+    bool user_exit=false;
     map<string, void(*)(vector<string>)> command_table; // free function pointers
 
     map<string, function< void(vector<string>)> > command_table2; // converted member function storage
@@ -38,6 +39,8 @@ class Command_line
 
     vector<string> &split(const string &, char, vector<string> &);
     vector<string> split(const string &, char);
+
+    void p();
     void parse_line(const string&);
     void execute();
     void print_parsed_line();

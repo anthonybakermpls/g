@@ -23,10 +23,10 @@ class Item
     void equip();
     void unequip();
 
-
   protected:
   private:
     string name; // e.g. sword of blazing testicles
+    string description;
     string type; // e.g. weapon
     string subtype; // e.g. sword, one hand
     map<string, int> attribute_bonus;  // e.g.   attributes["health"]=10;  // means +10 to health

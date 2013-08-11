@@ -1,19 +1,52 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <!-- comment -->
+
+<!--
+
+attributes
+-----------
+health
+energy
+mana
+experience
+level
+
+strength
+dexterity
+constitution
+intelligence
+charisma
+luck
+
+
+
+  Consumables
+    - food
+        will have a bonus that boosts the attribute by that value temporarily instead of a constant
+
+  Weapons
+-->
+
 <items>
   <item>
-    <name>Item 1</name>
-    <description>An item.</description>
-    <type>type 1</type>
-    <subtype>subtype 1</subtype>
-    <bonus></bonus>
+    <name>apple</name>
+    <description>Delicious fruit.</description>
+    <type>consumable</type>
+    <subtype>food</subtype>
+    <bonus>
+      <attribute>health</attribute>
+      <value>10</value>
+    </bonus>
   </item>
   <item>
-    <name>Item 2</name>
-    <description>An item.</description>
-    <type>type 1</type>
-    <subtype>subtype 2</subtype>
-    <bonus></bonus>
+    <name>Sword of Blazing Testicles</name>
+    <description>A long broadsword.</description>
+    <type>weapon</type>
+    <subtype>sword</subtype>
+    <bonus>
+      <attribute>health</attribute>
+      <value>10</value>
+    </bonus>
   </item>
 </items>
 <!-- this is  a comment -->

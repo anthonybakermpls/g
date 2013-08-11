@@ -11,53 +11,9 @@
 #include <sstream>
 #include <chrono>
 #include <ctime>
-
+#include <thread>
 
 using namespace std;
-
-
-
-
-
-
-class Callback
-{
-  public:
-    void operator()() { call(); };
-    virtual void call() = 0;
-};
-
-
-class BasicCallback : public Callback
-{
-  // pointer to member function
-  void (*function)(void);
-
-  public:
-    BasicCallback(void(*_function)(void))
-        : function( _function ) { };
-    virtual void call()
-    {
-        (*function)();
-    };
-};
-
-
-template <class AnyClass>
-class ClassCallback : public Callback
-{
-
-  void (AnyClass::*function)(void);  // pointer to member function
-  AnyClass* object;   // pointer to object
-
-  public:
-    ClassCallback(AnyClass* _object, void(AnyClass::*_function)(void))
-        : object( _object ), function( _function ) { };
-    virtual void call()
-    {
-        (*object.*function)();
-    };
-};
 
 
 
@@ -71,34 +27,37 @@ class ClassCallback : public Callback
 Command_line::Command_line()
 {
 
-
-
-
 }
 
 
-Command_line::~Command_line()
-{
-  //dtor
-}
+Command_line::~Command_line(){}
 
 
 
 void Command_line::prompt()
 {
+  thread t(&Command_line::p, this);
+  t.detach();
+}
 
-  auto time_point = chrono::system_clock::now();
-  time_t now_c = chrono::system_clock::to_time_t(time_point);
-  struct tm * now = localtime( & now_c );
+void Command_line::p()
+{
 
-  char* t=asctime(now);
-  string str=t;
-  cout << str.substr(0, str.size()-1) << " g>";
-  getline(cin, line);
+  while(!user_exit)
+  {
+    auto time_point = chrono::system_clock::now();
+    time_t now_c = chrono::system_clock::to_time_t(time_point);
+    struct tm * now = localtime( & now_c );
 
-  parse_line(line);
-//  print_parsed_line();
-  execute();
+    char* t=asctime(now);
+    string str=t;
+    cout << str.substr(0, str.size()-1) << " g>";
+    getline(cin, line);
+
+    parse_line(line);
+  //  print_parsed_line();
+    execute();
+  }
 
 }
 
@@ -192,7 +151,10 @@ void Command_line::help(vector<string> s)
 }
 
 
-
+void Command_line::quit(vector<string> v)
+{
+  user_exit=true;
+}
 
 void Command_line::register_function(string s, void(*f)(vector<string>))
 {
@@ -206,5 +168,46 @@ void Command_line::register_function2(string s, function<void(vector<string>)> f
 }
 
 
+
+//
+//class Callback
+//{
+//  public:
+//    void operator()() { call(); };
+//    virtual void call() = 0;
+//};
+//
+//
+//class BasicCallback : public Callback
+//{
+//  // pointer to member function
+//  void (*function)(void);
+//
+//  public:
+//    BasicCallback(void(*_function)(void))
+//        : function( _function ) { };
+//    virtual void call()
+//    {
+//        (*function)();
+//    };
+//};
+//
+//
+//template <class AnyClass>
+//class ClassCallback : public Callback
+//{
+//
+//  void (AnyClass::*function)(void);  // pointer to member function
+//  AnyClass* object;   // pointer to object
+//
+//  public:
+//    ClassCallback(AnyClass* _object, void(AnyClass::*_function)(void))
+//        : object( _object ), function( _function ) { };
+//    virtual void call()
+//    {
+//        (*object.*function)();
+//    };
+//};
+//
 
 

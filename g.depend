@@ -62,11 +62,11 @@
 	<vector>
 	"item.h"
 
-1375671517 /home/anthony/Code/g/include/item.h
+1376163486 /home/anthony/Code/g/include/item.h
 	<string>
 	<map>
 
-1375661747 source:/home/anthony/Code/g/src/command_line.cpp
+1376182867 source:/home/anthony/Code/g/src/command_line.cpp
 	"command_line.h"
 	<algorithm>
 	<iostream>
@@ -74,8 +74,9 @@
 	<sstream>
 	<chrono>
 	<ctime>
+	<thread>
 
-1375649348 /home/anthony/Code/g/include/command_line.h
+1376182867 /home/anthony/Code/g/include/command_line.h
 	<functional>
 	<string>
 	<vector>
@@ -100,13 +101,15 @@
 	<android/log.h>
 	<assert.h>
 
-1376151862 source:/home/anthony/Code/g/src/main.cpp
+1376182561 source:/home/anthony/Code/g/src/main.cpp
 	<iostream>
 	<string>
 	<vector>
 	<chrono>
 	<ctime>
 	<ratio>
+	<thread>
+	<unistd.h>
 	"../lib/tinyxml2-master/tinyxml2.h"
 	"command_line.h"
 	"character.h"

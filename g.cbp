@@ -31,9 +31,11 @@
 		<Compiler>
 			<Add option="-std=c++11" />
 			<Add option="-Wall" />
+			<Add option="-pthread" />
 			<Add directory="include" />
 		</Compiler>
 		<Linker>
+			<Add option="-pthread" />
 			<Add library="lib/tinyxml2-master/tinyxml2/tinyxml2-cbp/bin/Release/libtinyxml2.a" />
 		</Linker>
 		<Unit filename="include/character.h" />

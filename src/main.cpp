@@ -6,6 +6,11 @@
 #include <chrono>
 #include <ctime>
 #include <ratio>
+#include <thread>
+
+#include <unistd.h> //sleep
+
+
 
 /// external libraries
 #include "../lib/tinyxml2-master/tinyxml2.h"
@@ -19,18 +24,15 @@ using namespace std;
 
 
 
-bool user_exit=false;
+
 void quit(vector<string>);
-
-
-
+void test(){cout << "thread!" << endl;}
 
 
 
 
 int main()
 {
-  user_exit=false;
 
 
 
@@ -57,10 +59,10 @@ int main()
 
 
   // insert free functions into command table
-  void(*fn)(vector<string>);
-  fn = quit;
-  command_line.register_function("quit",fn);
-  command_line.register_function("exit",fn); // two commands do the same thing
+//  void(*fn)(vector<string>);
+//  fn = quit;
+//  command_line.register_function("quit",fn);
+//  command_line.register_function("exit",fn); // two commands do the same thing
 
   // insert member functions into command table 2
   function<void(vector<string>)> f = bind( &Command_line::help, &command_line, placeholders::_1);
@@ -69,52 +71,56 @@ int main()
   f = bind( &Character::status, &player, placeholders::_1);
   command_line.register_function2("status",f);
 
+  f = bind( &Command_line::quit, &command_line, placeholders::_1);
+  command_line.register_function2("quit",f);
+
+
+
+
+
+
+
+
 
   tinyxml2::XMLDocument doc;
   doc.LoadFile( "cfg/items.xml" );
   if(doc.ErrorID() != 0)
+  {
     doc.PrintError();
+    return 1; // we have to bail out because our items file is broken
+  }
 
-//	doc.Parse( xml );
-//	cout << "XML parsing ErrorID(): " << doc.ErrorID() << endl;
 
-//  cout << endl;
-//  cout << "Printing items. " << endl;
-//  cout << "----------------------" << endl;
 
   const char* c;
   string str;
   tinyxml2::XMLElement *levelElement = doc.FirstChildElement(); // items   //cout << levelElement->Name();
-
-
   for (tinyxml2::XMLElement* child = levelElement->FirstChildElement(); child != NULL; child = child->NextSiblingElement())
   {
     c = child->FirstChildElement("name")->GetText();
     str=c;
-    cout << "Item Name: " << str << endl;
+    cout << "Item name: " << str << endl;
   }
 
 
 
 
+//  chrono::high_resolution_clock::time_point t1 = chrono::high_resolution_clock::now();
+//
+//   //some op
 
-  while(!user_exit)
+//
+//  chrono::high_resolution_clock::time_point t2 = chrono::high_resolution_clock::now();
+//
+//  chrono::duration<double> time_span = chrono::duration_cast<chrono::duration<double>>(t2 - t1);
+//  cout << "It took " << time_span.count() << " seconds.";
+
+  command_line.prompt();
+
+  while(1)
   {
-
-
-//  typedef std::chrono::high_resolution_clock clock;
-//  typedef std::chrono::milliseconds milliseconds;
-//
-//  clock::time_point t0 = clock::now();
-//   ... some operation to time estimate
-//  clock::time_point t1 = clock::now();
-//
-//  milliseconds total_ms = std::chrono::duration_cast<milliseconds>(t1 - t0);
-
-
-
-
-     command_line.prompt();
+    sleep(5); // seconds
+    cout << "main..." << endl;
   }
 
 
@@ -130,7 +136,6 @@ int main()
 void quit(vector<string> s)
 {
   cout << "Quitting.\n";
-  user_exit=true;
 }
 
 
