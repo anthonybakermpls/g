@@ -17,6 +17,7 @@ class Command_line
   public:
     Command_line();
     virtual ~Command_line();
+    void set_quit(bool*);
     void prompt();
     void register_function(string, void(*)(vector<string>)); // function name, function pointer
     void register_function2(string, function<void(vector<string>)> );
@@ -31,11 +32,11 @@ class Command_line
     size_t num_args;
     string name;
     string line;
-    bool user_exit=false;
+    string timestamp;
+    bool* user_exit_ptr;
+
     map<string, void(*)(vector<string>)> command_table; // free function pointers
-
     map<string, function< void(vector<string>)> > command_table2; // converted member function storage
-
 
     vector<string> &split(const string &, char, vector<string> &);
     vector<string> split(const string &, char);

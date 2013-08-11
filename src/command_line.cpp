@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <iterator>
+#include <limits>       // std::numeric_limits
 #include <sstream>
 #include <chrono>
 #include <ctime>
@@ -32,7 +33,10 @@ Command_line::Command_line()
 
 Command_line::~Command_line(){}
 
-
+void Command_line::set_quit(bool* b)
+{
+  user_exit_ptr=b;
+}
 
 void Command_line::prompt()
 {
@@ -43,19 +47,24 @@ void Command_line::prompt()
 void Command_line::p()
 {
 
-  while(!user_exit)
+  while(!(*user_exit_ptr))
   {
+    line.clear();
+    name.clear();
+//    cin.clear();
+//    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
     auto time_point = chrono::system_clock::now();
     time_t now_c = chrono::system_clock::to_time_t(time_point);
     struct tm * now = localtime( & now_c );
 
     char* t=asctime(now);
-    string str=t;
-    cout << str.substr(0, str.size()-1) << " g>";
+    timestamp=t;
+    cout << timestamp.substr(0, timestamp.size()-1) << " g>";
     getline(cin, line);
 
     parse_line(line);
-  //  print_parsed_line();
+//    print_parsed_line();
     execute();
   }
 
@@ -153,7 +162,7 @@ void Command_line::help(vector<string> s)
 
 void Command_line::quit(vector<string> v)
 {
-  user_exit=true;
+  *user_exit_ptr=true;
 }
 
 void Command_line::register_function(string s, void(*f)(vector<string>))

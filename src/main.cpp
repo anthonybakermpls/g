@@ -23,7 +23,7 @@
 using namespace std;
 
 
-
+bool user_exit=false;
 
 void quit(vector<string>);
 void test(){cout << "thread!" << endl;}
@@ -38,6 +38,7 @@ int main()
 
 
   Command_line command_line;
+  command_line.set_quit(&user_exit);
   Character player;
 
 
@@ -65,13 +66,15 @@ int main()
 //  command_line.register_function("exit",fn); // two commands do the same thing
 
   // insert member functions into command table 2
-  function<void(vector<string>)> f = bind( &Command_line::help, &command_line, placeholders::_1);
+  function<void(vector<string>)> f;
+
+  f= bind( &Command_line::help, &command_line, placeholders::_1);
   command_line.register_function2("help",f);
 
-  f = bind( &Character::status, &player, placeholders::_1);
+  f= bind( &Character::status, &player, placeholders::_1);
   command_line.register_function2("status",f);
 
-  f = bind( &Command_line::quit, &command_line, placeholders::_1);
+  f= bind( &Command_line::quit, &command_line, placeholders::_1);
   command_line.register_function2("quit",f);
 
 
@@ -117,7 +120,7 @@ int main()
 
   command_line.prompt();
 
-  while(1)
+  while(!user_exit)
   {
     sleep(5); // seconds
     cout << "main..." << endl;
@@ -136,6 +139,7 @@ int main()
 void quit(vector<string> s)
 {
   cout << "Quitting.\n";
+  user_exit=true;
 }
 
 
