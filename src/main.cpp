@@ -107,23 +107,42 @@ int main()
 
 
 
-
 //  chrono::high_resolution_clock::time_point t1 = chrono::high_resolution_clock::now();
 //
 //   //some op
-
-//
 //  chrono::high_resolution_clock::time_point t2 = chrono::high_resolution_clock::now();
 //
 //  chrono::duration<double> time_span = chrono::duration_cast<chrono::duration<double>>(t2 - t1);
 //  cout << "It took " << time_span.count() << " seconds.";
 
+
+
+
+
+  chrono::high_resolution_clock::time_point t1 = chrono::high_resolution_clock::now();
+  chrono::high_resolution_clock::time_point t2;
+  double game_tick_ms=32;
+  double dt;
+
+
+
   command_line.prompt();
 
   while(!user_exit)
   {
-    sleep(5); // seconds
-    cout << "main..." << endl;
+
+
+    t2 = chrono::high_resolution_clock::now();
+    chrono::duration<double> dt = chrono::duration_cast<chrono::duration<double>>(t2 - t1);
+
+
+    while(dt >= dt.count())// game tick rate update
+    {
+        dt -= game_tick_ms;
+        time_gameclock += game_tick_ms;
+    }
+
+
   }
 
 
