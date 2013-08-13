@@ -31,14 +31,6 @@ using namespace std;
 
 
 
-
-
-
-
-
-
-
-
 shared_ptr<bool> user_exit_ptr;
 
 
@@ -52,6 +44,7 @@ int main()
 
   Command_line command_line;
   Character player;
+  Character monster1;
 
 
 
@@ -134,7 +127,6 @@ int main()
   bool user_exit=false;
   while(user_exit != true)
   {
-
 
 
 

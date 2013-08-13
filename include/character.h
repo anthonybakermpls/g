@@ -11,8 +11,6 @@ using namespace std;
 
 
 
-
-
 class Character
 {
   public:
@@ -23,10 +21,11 @@ class Character
   protected:
   private:
     map<string, int> attributes;
-
     vector<Item> inventory;
-
-
+		unsigned int mood; // 
+		unsigned int disposition; // mood tends toward this state
 };
+
+
 
 #endif // CHARACTER_H
