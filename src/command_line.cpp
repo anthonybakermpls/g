@@ -12,7 +12,7 @@
 #include <sstream>
 #include <chrono>
 #include <ctime>
-#include <thread>
+
 
 using namespace std;
 
@@ -33,10 +33,7 @@ Command_line::Command_line()
 
 Command_line::~Command_line(){}
 
-void Command_line::set_quit(bool* b)
-{
-  user_exit_ptr=b;
-}
+void Command_line::set_quit(){}
 
 void Command_line::prompt()
 {
@@ -47,7 +44,7 @@ void Command_line::prompt()
 void Command_line::p()
 {
 
-  while(!(*user_exit_ptr))
+  while(!user_exit)
   {
     line.clear();
     name.clear();
@@ -162,8 +159,17 @@ void Command_line::help(vector<string> s)
 
 void Command_line::quit(vector<string> v)
 {
-  *user_exit_ptr=true;
+  user_exit=true;
+  command_table["main_quit"](v);
 }
+
+void Command_line::show(vector<string> v)
+{
+//  cout << "user_exit_ptr: " << *user_exit_ptr << endl;
+}
+
+
+
 
 void Command_line::register_function(string s, void(*f)(vector<string>))
 {

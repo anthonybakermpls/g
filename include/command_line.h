@@ -6,6 +6,9 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <memory>
+#include <mutex>
+#include <thread>
 
 using namespace std;
 
@@ -17,13 +20,14 @@ class Command_line
   public:
     Command_line();
     virtual ~Command_line();
-    void set_quit(bool*);
+    void set_quit();
     void prompt();
     void register_function(string, void(*)(vector<string>)); // function name, function pointer
-    void register_function2(string, function<void(vector<string>)> );
+    void register_function2(string, function<void(vector<string>)> ); // used for class member functions
 
     void help(vector<string>);
     void quit(vector<string>);
+    void show(vector<string>);
 
   protected:
   private:
@@ -33,7 +37,7 @@ class Command_line
     string name;
     string line;
     string timestamp;
-    bool* user_exit_ptr;
+    bool user_exit=false;
 
     map<string, void(*)(vector<string>)> command_table; // free function pointers
     map<string, function< void(vector<string>)> > command_table2; // converted member function storage

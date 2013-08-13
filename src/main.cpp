@@ -5,11 +5,12 @@
 
 #include <chrono>
 #include <ctime>
+#include <memory>
+#include <mutex>
 #include <ratio>
 #include <thread>
 
 #include <unistd.h> //sleep
-
 
 
 /// external libraries
@@ -23,34 +24,35 @@
 using namespace std;
 
 
-bool user_exit=false;
 
-void quit(vector<string>);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+shared_ptr<bool> user_exit_ptr;
+
+
 void test(){cout << "thread!" << endl;}
-
-
+void quit(vector<string>s){cout << "quitting..." << endl; exit(0);}
 
 
 int main()
 {
 
 
-
-
   Command_line command_line;
-  command_line.set_quit(&user_exit);
   Character player;
 
-
-
-  chrono::high_resolution_clock::time_point t1 = chrono::high_resolution_clock::now();
-//  cout << "printing out 1000 stars...\n";
-//  for (int i=0; i<1000; ++i) cout << "*";
-//  cout << endl;
-  chrono::high_resolution_clock::time_point t2 = chrono::high_resolution_clock::now();
-  chrono::duration<double> time_span = chrono::duration_cast<chrono::duration<double>>(t2 - t1);
-//  cout << "It took me " << time_span.count() << " seconds.";
-//  cout << endl;
 
 
 
@@ -60,9 +62,9 @@ int main()
 
 
   // insert free functions into command table
-//  void(*fn)(vector<string>);
-//  fn = quit;
-//  command_line.register_function("quit",fn);
+  void(*fn)(vector<string>);
+  fn = quit;
+  command_line.register_function("main_quit",fn);
 //  command_line.register_function("exit",fn); // two commands do the same thing
 
   // insert member functions into command table 2
@@ -77,6 +79,8 @@ int main()
   f= bind( &Command_line::quit, &command_line, placeholders::_1);
   command_line.register_function2("quit",f);
 
+  f= bind( &Command_line::show, &command_line, placeholders::_1);
+  command_line.register_function2("show",f);
 
 
 
@@ -117,49 +121,38 @@ int main()
 
 
 
-
-
-  chrono::high_resolution_clock::time_point t1 = chrono::high_resolution_clock::now();
-  chrono::high_resolution_clock::time_point t2;
-  double game_tick_ms=32;
-  double dt;
-
+//
+//  auto t1 = chrono::system_clock::now();
+//  auto dt = chrono::system_clock::now() - t1;
+//
+//  auto ms = chrono::duration_cast<chrono::milliseconds>(dt);
+//  cout << "these few commands took:" << ms.count() << " milliseconds" << endl;
 
 
   command_line.prompt();
 
-  while(!user_exit)
+  bool user_exit=false;
+  while(user_exit != true)
   {
 
 
-    t2 = chrono::high_resolution_clock::now();
-    chrono::duration<double> dt = chrono::duration_cast<chrono::duration<double>>(t2 - t1);
 
 
-    while(dt >= dt.count())// game tick rate update
-    {
-        dt -= game_tick_ms;
-        time_gameclock += game_tick_ms;
-    }
+
+
 
 
   }
 
 
 
+  cout << "Done." << endl;
 
   return 0;
 }
 
 
 
-
-
-void quit(vector<string> s)
-{
-  cout << "Quitting.\n";
-  user_exit=true;
-}
 
 
 
