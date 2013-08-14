@@ -129,10 +129,11 @@ int main()
   {
 
 
-
-
-
-
+    sleep(5);
+    cout << "monster1 update: " << endl;
+    monster1.update();
+    monster1.reset_turn();
+    cout << endl;
 
   }
 
