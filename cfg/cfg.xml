@@ -1,0 +1,40 @@
+ ﻿<?xml version="1.0" encoding="utf-8"?>
+<Options>
+  <Game>
+    <Username>Norbert</Username>
+  </Game>
+  <Graphics>
+    <VSync>true</VSync>
+    <Resolution>
+      <Width>1920</Width>
+      <Height>1200</Height>
+      <Fullscreen>true</Fullscreen>
+    </Resolution>
+    <PostProcess>
+      <Bloom>false</Bloom>
+    </PostProcess>
+  </Graphics>
+  <Sound>
+    <GlobalVolume>0.5</GlobalVolume>
+    <MusicVolume>0.08571429</MusicVolume>
+    <SFXVolume>0.8</SFXVolume>
+  </Sound>
+  <Controls>
+    <Player1>
+      <Keyboard>    
+        <Up>E</Up>
+        <Down>D</Down>
+        <Left>S</Left>
+        <Right>F</Right>
+        <Attack1>Up</Attack1>
+        <Attack2>Left</Attack2>
+        <Attack3>Right</Attack3>
+        <Attack4>Down</Attack4>
+        <Potion>Z</Potion>
+        <Back>Escape</Back>
+        <Menu>Escape</Menu>
+        <Info>Tab</Info>
+      </Keyboard>
+    </Player1>
+  </Controls>
+</Options>

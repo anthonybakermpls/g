@@ -54,7 +54,7 @@ class Character
     bool turn_taken=false; // prevents character from performing infinite loops in its states/actions
 
     typedef void (Character::*Character_fn_ptr)(void); // http://www.parashift.com/c++-faq/typedef-for-ptr-to-memfn.html
-    Character_fn_ptr current_state_fn_ptr = &Character::wander;//pointer to current state function
+    Character_fn_ptr current_state_fn_ptr = &Character::wander; //pointer to current state function - default for this object
 
     bool enemy_seen=false;
     bool enemy_near=false;

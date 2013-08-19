@@ -25,7 +25,6 @@ Character::Character()
   attributes["intelligence"]=10;
   attributes["charisma"]=10;
   attributes["luck"]=10;
-
 }
 
 
@@ -38,6 +37,8 @@ Character::~Character()
 /// show content of attributes map
 void Character::status(vector<string>s)
 {
+
+  cout << endl;
 
   /* list all attributes */
   map<string,int>::iterator it;
@@ -56,12 +57,6 @@ void Character::status(vector<string>s)
 
 
   /* list the current state */
-
-
-
-
-
-
 }
 
 

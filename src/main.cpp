@@ -92,6 +92,7 @@ int main()
 
 
 
+
   const char* c;
   string str;
   tinyxml2::XMLElement *levelElement = doc.FirstChildElement(); // items   //cout << levelElement->Name();
@@ -101,7 +102,6 @@ int main()
     str=c;
     cout << "Item name: " << str << endl;
   }
-
 
 
 //  chrono::high_resolution_clock::time_point t1 = chrono::high_resolution_clock::now();
@@ -114,27 +114,22 @@ int main()
 
 
 
-//
 //  auto t1 = chrono::system_clock::now();
 //  auto dt = chrono::system_clock::now() - t1;
 //
 //  auto ms = chrono::duration_cast<chrono::milliseconds>(dt);
 //  cout << "these few commands took:" << ms.count() << " milliseconds" << endl;
 
-
   command_line.prompt();
 
   bool user_exit=false;
   while(user_exit != true)
   {
-
-
     sleep(5);
     cout << "monster1 update: " << endl;
     monster1.update();
     monster1.reset_turn();
     cout << endl;
-
   }
 
 
@@ -143,7 +138,6 @@ int main()
 
   return 0;
 }
-
 
 
 
