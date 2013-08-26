@@ -41,10 +41,12 @@
 		<Unit filename="include/character.h" />
 		<Unit filename="include/command_line.h" />
 		<Unit filename="include/item.h" />
+		<Unit filename="include/map.h" />
 		<Unit filename="src/character.cpp" />
 		<Unit filename="src/command_line.cpp" />
 		<Unit filename="src/item.cpp" />
 		<Unit filename="src/main.cpp" />
+		<Unit filename="src/map.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />

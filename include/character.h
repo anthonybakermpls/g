@@ -48,6 +48,8 @@ class Character
   protected:
   private:
 
+    int debug_lvl=0;
+
     map<string, int> attributes;
     vector<Item> inventory;
 		unsigned int disposition; // mood tends toward this state

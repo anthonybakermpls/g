@@ -43,6 +43,7 @@ int main()
 
 
   Command_line command_line;
+
   Character player;
   Character monster1;
 
@@ -105,10 +106,8 @@ int main()
 
 
 //  chrono::high_resolution_clock::time_point t1 = chrono::high_resolution_clock::now();
-//
 //   //some op
 //  chrono::high_resolution_clock::time_point t2 = chrono::high_resolution_clock::now();
-//
 //  chrono::duration<double> time_span = chrono::duration_cast<chrono::duration<double>>(t2 - t1);
 //  cout << "It took " << time_span.count() << " seconds.";
 
@@ -120,16 +119,57 @@ int main()
 //  auto ms = chrono::duration_cast<chrono::milliseconds>(dt);
 //  cout << "these few commands took:" << ms.count() << " milliseconds" << endl;
 
+
+
+
+
+
+
+
   command_line.prompt();
 
   bool user_exit=false;
   while(user_exit != true)
   {
-    sleep(5);
-    cout << "monster1 update: " << endl;
-    monster1.update();
-    monster1.reset_turn();
-    cout << endl;
+
+//    render_frame();
+//    time_physics_curr = glfwGetTime()*1000; // This, like the rendering, ticks every time around.
+//    physics_ptr->tick( ((float)(time_physics_curr - time_physics_prev))/1000.0, 10 );
+//    time_physics_prev = time_physics_curr;
+//    dt = (glfwGetTime()*1000) - t; // Game Clock ticks once every game_tick_ms milliseconds on average
+
+
+//    while(dt >= game_tick_ms)
+//    {
+//        dt -= game_tick_ms;
+//        time_gameclock += game_tick_ms;
+//
+//        controls.tick();
+//        world_update();
+//        game_tick();
+//
+          usleep(1000000); //1,000,000 mu s = 1 second   // 32000 mu s = 32 microseconds
+
+
+
+
+
+
+//          cout << "monster1 update: " << endl;
+          monster1.update();
+          monster1.reset_turn();
+
+
+
+
+
+
+
+
+//        fps=(renderer.get_frame())/glfwGetTime();
+//    }
+//
+
   }
 
 

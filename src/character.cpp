@@ -12,7 +12,7 @@ using namespace std;
 
 Character::Character()
 {
-  // These are defaults that will be over[written/ridden] by derived classes
+  // These are defaults that will be over[written/ridden]
   attributes["health"]=100;
   attributes["energy"]=100;
   attributes["mana"]=100;
@@ -55,6 +55,7 @@ void Character::status(vector<string>s)
       cout << it->first << " => " << it->second << '\n';
   }
 
+  cout << endl;
 
   /* list the current state */
 }
@@ -84,14 +85,18 @@ void Character::reset_turn()
 void Character::wait()
 {
   /* how to get out of this state? */
-  cout << this << ": " << "wait(); " << endl;
+
+  if(debug_lvl>0)
+    cout << this << ": " << "wait(); " << endl;
 
   wander(); // or stand_still();
 }
 
 void Character::patrol_state()// do patrol behaviors
 {
-  cout << this << ": " << "patrol_state(); " << endl;
+
+  if(debug_lvl>0)
+    cout << this << ": " << "patrol_state(); " << endl;
 
   patrol(); // move back and forth
   look_for_enemy(); // locate enemy
@@ -99,7 +104,8 @@ void Character::patrol_state()// do patrol behaviors
 
 void Character::attack_state() // do attack behaviors
 {
-  cout << this << ": " << "attack_state(); " << endl;
+  if(debug_lvl>0)
+    cout << this << ": " << "attack_state(); " << endl;
 
   follow_enemy(); // if too far away
   attack_enemy(); // if close enough
@@ -108,7 +114,9 @@ void Character::attack_state() // do attack behaviors
 
 void Character::sleep_state() // do sleep behaviors
 {
-  cout << this << ": " << "sleep_state(); " << endl;
+
+  if(debug_lvl>0)
+    cout << this << ": " << "sleep_state(); " << endl;
 
   sleep(); // make snore noise
 }
@@ -139,7 +147,9 @@ void Character::patrol()
 {
   if(turn_taken)
     return;
-  cout << this << ": " << "patrol();" << endl;
+  if(debug_lvl>0)
+    cout << this << ": " << "patrol();" << endl;
+
  /* move back and forth */
  turn_taken=1;
 }
@@ -148,7 +158,10 @@ void Character::follow_enemy()
 {
   if(turn_taken)
     return;
-  cout << this << ": " << "follow_enemy();" << endl;
+
+  if(debug_lvl>0)
+    cout << this << ": " << "follow_enemy();" << endl;
+
   /* move toward enemy */
   turn_taken=1;
 }
@@ -157,7 +170,9 @@ void Character::wander()
 {
   if(turn_taken)
     return;
-  cout << this << ": " << "wander();" << endl;
+
+  if(debug_lvl>0)
+    cout << this << ": " << "wander();" << endl;
 
   /* move randomly */
   turn_taken=1;
@@ -167,7 +182,11 @@ void Character::stand_still()
 {
   if(turn_taken)
     return;
-  cout << this << ": " << "stand_still();" << endl;
+
+  if(debug_lvl>0)
+    cout << this << ": " << "stand_still();" << endl;
+
+
   /* don't move at all */
   turn_taken=1;
 }
@@ -179,7 +198,10 @@ void Character::look_for_enemy()
 {
   if(turn_taken)
     return;
-  cout << this << ": " << "look_for_enemy();" << endl;
+
+
+  if(debug_lvl>0)
+    cout << this << ": " << "look_for_enemy();" << endl;
 
   /* if the enemy is seen we transition to attack state similar */
   if(enemy_seen)
@@ -196,7 +218,9 @@ void Character::attack_enemy()
     return;
 
   // battle code
-  cout << this << ": " << "attack_enemy();" << endl;
+
+  if(debug_lvl>0)
+    cout << this << ": " << "attack_enemy();" << endl;
 
   turn_taken=1;
 }
@@ -211,7 +235,10 @@ void Character::sleep()
 
   if(asleep)
   {
-    cout << this << ": " << "sleep();" << endl;
+
+    if(debug_lvl>0)
+      cout << this << ": " << "sleep();" << endl;
+
     // make snore noise
     /* set up a timer here and countdown to flipping bit of asleep */
     turn_taken=1;
