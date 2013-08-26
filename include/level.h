@@ -25,7 +25,7 @@ class Level
   private:
 
 
-    list<tuple<Character*,glm::vec3>> character_positions;
+    list< tuple<Character*,glm::vec3> > character_positions;
 
 };
 
