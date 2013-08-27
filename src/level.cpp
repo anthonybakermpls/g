@@ -20,6 +20,10 @@ Level::~Level()
   //dtor
 }
 
+void Level::reset()
+{
+
+}
 
 
 

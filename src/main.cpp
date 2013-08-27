@@ -14,11 +14,13 @@
 
 
 /// external libraries
-#include "../lib/tinyxml2-master/tinyxml2.h"
+#include "tinyxml2-master/tinyxml2.h"
+//#include <boost/log/trivial.hpp>
+
 
 #include "command_line.h"
 #include "character.h"
-
+#include "level.h"
 
 
 using namespace std;
@@ -42,12 +44,14 @@ int main()
 {
 
 
+
+
   Command_line command_line;
 
-  Character player;
-  Character monster1;
+  Character player_1;
+  Character monster_1;
 
-
+  Level level_1;
 
 
 
@@ -67,7 +71,7 @@ int main()
   f= bind( &Command_line::help, &command_line, placeholders::_1);
   command_line.register_function2("help",f);
 
-  f= bind( &Character::status, &player, placeholders::_1);
+  f= bind( &Character::status, &player_1, placeholders::_1);
   command_line.register_function2("status",f);
 
   f= bind( &Command_line::quit, &command_line, placeholders::_1);
@@ -156,8 +160,8 @@ int main()
 
 
 //          cout << "monster1 update: " << endl;
-          monster1.update();
-          monster1.reset_turn();
+          monster_1.update();
+          monster_1.reset_turn();
 
 
 

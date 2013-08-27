@@ -4,7 +4,11 @@
 
 #include <list>
 #include <tuple>        // std::tuple, std::get, std::tie, std::ignore
+
 #include <glm.hpp>
+
+#include "character.h"
+
 
 
 using namespace std;
@@ -17,6 +21,8 @@ class Level
   public:
     Level();
     virtual ~Level();
+
+    void reset();
 
 
 
