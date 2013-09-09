@@ -2,12 +2,6 @@
 #define LEVEL_H
 
 
-#include <list>
-#include <tuple>        // std::tuple, std::get, std::tie, std::ignore
-
-#include <glm.hpp>
-
-#include "character.h"
 
 
 
@@ -31,7 +25,7 @@ class Level
   private:
 
 
-    list< tuple<Character*,glm::vec3> > character_positions;
+
 
 };
 

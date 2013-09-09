@@ -157,7 +157,7 @@
 	<vector>
 	"item.h"
 
-1377475096 source:/home/anthony/Data/Code/g/src/main.cpp
+1378726281 source:/home/anthony/Data/Code/g/src/main.cpp
 	<iostream>
 	<string>
 	<vector>
@@ -168,9 +168,12 @@
 	<ratio>
 	<thread>
 	<unistd.h>
-	"../lib/tinyxml2-master/tinyxml2.h"
+	"tinyxml2-master/tinyxml2.h"
 	"command_line.h"
 	"character.h"
+	"character_manager.h"
+	"game.h"
+	"level.h"
 
 1375733067 /home/anthony/Data/Code/g/lib/tinyxml2-master/tinyxml2.h
 	<ctype.h>
@@ -196,14 +199,10 @@
 	<tuple>
 	"character.h"
 
-1377560773 source:/home/anthony/Data/Code/g/src/level.cpp
+1378724503 source:/home/anthony/Data/Code/g/src/level.cpp
 	"level.h"
 
-1377560766 /home/anthony/Data/Code/g/include/level.h
-	<list>
-	<tuple>
-	<glm.hpp>
-	"character.h"
+1378725823 /home/anthony/Data/Code/g/include/level.h
 
 1376366456 /home/anthony/Data/Code/g/lib/glm/glm/glm.hpp
 	"core/_fixes.hpp"
@@ -437,4 +436,24 @@
 	"func_noise.inl"
 
 1376366456 /home/anthony/Data/Code/g/lib/glm/glm/core/func_noise.inl
+
+1378724503 source:/home/anthony/Data/Code/g/src/character_manager.cpp
+	"character_manager.h"
+
+1378725823 /home/anthony/Data/Code/g/include/character_manager.h
+	<list>
+	<tuple>
+	<glm.hpp>
+	"character.h"
+
+1378726049 source:/home/anthony/Data/Code/g/src/game.cpp
+	"game.h"
+	"game_state.h"
+
+1378726041 /home/anthony/Data/Code/g/include/game.h
+	<map>
+	"game_state.h"
+
+1378726163 /home/anthony/Data/Code/g/include/game_state.h
+	<string>
 

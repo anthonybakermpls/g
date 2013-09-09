@@ -20,6 +20,8 @@
 
 #include "command_line.h"
 #include "character.h"
+#include "character_manager.h"
+#include "game.h"
 #include "level.h"
 
 
@@ -40,20 +42,21 @@ void test(){cout << "thread!" << endl;}
 void quit(vector<string>s){cout << "quitting..." << endl; exit(0);}
 
 
-int main()
+int main(int argc, char* argv[])
 {
 
 
 
 
   Command_line command_line;
+  Character_manager cm;
 
   Character player_1;
   Character monster_1;
 
   Level level_1;
-
-
+//  level_1.add_character(&player_1);
+//  level_1.add_character(&monster_1);
 
 
 
