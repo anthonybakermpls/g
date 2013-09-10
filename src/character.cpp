@@ -60,7 +60,10 @@ void Character::status(vector<string>s)
   /* list the current state */
 }
 
-
+string Character::get_name()
+{
+  return name;
+}
 
 
 

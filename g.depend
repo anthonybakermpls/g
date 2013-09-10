@@ -146,26 +146,26 @@
 	<string>
 	<map>
 
-1376962992 source:/home/anthony/Data/Code/g/src/character.cpp
+1378778270 source:/home/anthony/Data/Code/g/src/character.cpp
 	"character.h"
 	<iostream>
 
-1376963005 /home/anthony/Data/Code/g/include/character.h
+1378778232 /home/anthony/Data/Code/g/include/character.h
 	<functional>
 	<map>
 	<string>
 	<vector>
 	"item.h"
 
-1378726281 source:/home/anthony/Data/Code/g/src/main.cpp
+1378778198 source:/home/anthony/Data/Code/g/src/main.cpp
 	<iostream>
-	<string>
 	<vector>
 	<chrono>
 	<ctime>
 	<memory>
 	<mutex>
 	<ratio>
+	<string>
 	<thread>
 	<unistd.h>
 	"tinyxml2-master/tinyxml2.h"
@@ -437,12 +437,15 @@
 
 1376366456 /home/anthony/Data/Code/g/lib/glm/glm/core/func_noise.inl
 
-1378724503 source:/home/anthony/Data/Code/g/src/character_manager.cpp
+1378778856 source:/home/anthony/Data/Code/g/src/character_manager.cpp
 	"character_manager.h"
+	<iostream>
 
-1378725823 /home/anthony/Data/Code/g/include/character_manager.h
+1378778198 /home/anthony/Data/Code/g/include/character_manager.h
 	<list>
+	<string>
 	<tuple>
+	<vector>
 	<glm.hpp>
 	"character.h"
 

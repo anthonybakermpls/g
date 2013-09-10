@@ -20,6 +20,9 @@ class Character
     Character();
     virtual ~Character();
     void status(vector<string>);
+    string get_name();
+
+
     void update();
     void reset_turn();
 
@@ -48,6 +51,7 @@ class Character
   protected:
   private:
 
+    string name;
     int debug_lvl=0;
 
     map<string, int> attributes;

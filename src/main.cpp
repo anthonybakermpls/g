@@ -1,6 +1,6 @@
 
 #include <iostream>
-#include <string>
+
 #include <vector>
 
 #include <chrono>
@@ -8,6 +8,7 @@
 #include <memory>
 #include <mutex>
 #include <ratio>
+#include <string>
 #include <thread>
 
 #include <unistd.h> //sleep
@@ -31,7 +32,7 @@ using namespace std;
 
 
 
-
+void getopts(int&, char** &);
 
 
 
@@ -42,23 +43,21 @@ void test(){cout << "thread!" << endl;}
 void quit(vector<string>s){cout << "quitting..." << endl; exit(0);}
 
 
-int main(int argc, char* argv[])
+int main(int argc, char** argv)
 {
 
-
+  getopts(argc,argv);
 
 
   Command_line command_line;
   Character_manager cm;
-
-  Character player_1;
-  Character monster_1;
-
   Level level_1;
-//  level_1.add_character(&player_1);
-//  level_1.add_character(&monster_1);
 
 
+
+
+
+  cm.new_character();
 
 
 
@@ -71,16 +70,20 @@ int main(int argc, char* argv[])
   // insert member functions into command table 2
   function<void(vector<string>)> f;
 
-  f= bind( &Command_line::help, &command_line, placeholders::_1);
+  f= bind(&Command_line::help, &command_line, placeholders::_1);
   command_line.register_function2("help",f);
 
-  f= bind( &Character::status, &player_1, placeholders::_1);
+//  f= bind(&Character::status, &player_1, placeholders::_1);
+//  command_line.register_function2("status",f);
+
+  f= bind(&Character_manager::status, &cm, placeholders::_1);
   command_line.register_function2("status",f);
 
-  f= bind( &Command_line::quit, &command_line, placeholders::_1);
+
+  f= bind(&Command_line::quit, &command_line, placeholders::_1);
   command_line.register_function2("quit",f);
 
-  f= bind( &Command_line::show, &command_line, placeholders::_1);
+  f= bind(&Command_line::show, &command_line, placeholders::_1);
   command_line.register_function2("show",f);
 
 
@@ -163,8 +166,8 @@ int main(int argc, char* argv[])
 
 
 //          cout << "monster1 update: " << endl;
-          monster_1.update();
-          monster_1.reset_turn();
+//          monster_1.update();
+//          monster_1.reset_turn();
 
 
 
@@ -191,7 +194,23 @@ int main(int argc, char* argv[])
 
 
 
+void getopts(int &a, char** &b)
+{
+  string t;
+  vector<string> vargv;
+  int i;
+  for (i=1; i<a; i++)
+  {
+    t.assign(b[i]);
+    vargv.push_back(t);
 
+    // do something with vargv
+    cout << "vargv contains:";
+    for (vector<string>::iterator it = vargv.begin() ; it != vargv.end(); ++it)
+      cout << ' ' << *it;
+    cout << '\n';
+  }
+}
 
 
 
