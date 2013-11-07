@@ -1,2 +1,2 @@
 #!/bin/sh
-/home/anthony/Data/Code/cbp2make-stl-rev147-all/bin/Release/cbp2make.linux-x86_64 -in g.cbp
+./cbp2make.linux-x86_64 -in g.cbp
