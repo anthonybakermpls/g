@@ -40,19 +40,19 @@
 			<Add option="-pthread" />
 			<Add library="lib/tinyxml2-master/tinyxml2/tinyxml2-cbp/bin/Release/libtinyxml2.a" />
 		</Linker>
-		<Unit filename="include/character.h" />
-		<Unit filename="include/character_manager.h" />
-		<Unit filename="include/command_line.h" />
-		<Unit filename="include/game.h" />
-		<Unit filename="include/game_state.h" />
-		<Unit filename="include/item.h" />
-		<Unit filename="include/level.h" />
 		<Unit filename="src/character.cpp" />
+		<Unit filename="src/character.h" />
 		<Unit filename="src/character_manager.cpp" />
+		<Unit filename="src/character_manager.h" />
 		<Unit filename="src/command_line.cpp" />
+		<Unit filename="src/command_line.h" />
 		<Unit filename="src/game.cpp" />
+		<Unit filename="src/game.h" />
+		<Unit filename="src/game_state.h" />
 		<Unit filename="src/item.cpp" />
+		<Unit filename="src/item.h" />
 		<Unit filename="src/level.cpp" />
+		<Unit filename="src/level.h" />
 		<Unit filename="src/main.cpp" />
 		<Extensions>
 			<code_completion />
