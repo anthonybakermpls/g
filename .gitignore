@@ -1,5 +1,6 @@
 # Compiled source #
 ###################
+g
 *.o
 *.so
 bin/Release/g

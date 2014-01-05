@@ -94,7 +94,7 @@ int main(int argc, char** argv)
 
 
   tinyxml2::XMLDocument doc;
-  doc.LoadFile( "cfg/items.xml" );
+  doc.LoadFile( "cfg/items.xml" ); // need absolute path?
   if(doc.ErrorID() != 0)
   {
     doc.PrintError();
