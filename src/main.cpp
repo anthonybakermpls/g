@@ -1,22 +1,21 @@
 
-#include <iostream>
-
-#include <vector>
 
 #include <chrono>
 #include <ctime>
+#include <iostream>
 #include <memory>
 #include <mutex>
 #include <ratio>
 #include <string>
 #include <thread>
+#include <vector>
 
 #include <unistd.h> //sleep
 
 
 /// external libraries
 #include "tinyxml2-master/tinyxml2.h"
-//#include <boost/log/trivial.hpp>
+
 
 
 #include "command_line.h"
@@ -65,7 +64,6 @@ int main(int argc, char** argv)
   void(*fn)(vector<string>);
   fn = quit;
   command_line.register_function("main_quit",fn);
-//  command_line.register_function("exit",fn); // two commands do the same thing
 
   // insert member functions into command table 2
   function<void(vector<string>)> f;
@@ -73,12 +71,8 @@ int main(int argc, char** argv)
   f= bind(&Command_line::help, &command_line, placeholders::_1);
   command_line.register_function2("help",f);
 
-//  f= bind(&Character::status, &player_1, placeholders::_1);
-//  command_line.register_function2("status",f);
-
   f= bind(&Character_manager::status, &cm, placeholders::_1);
   command_line.register_function2("status",f);
-
 
   f= bind(&Command_line::quit, &command_line, placeholders::_1);
   command_line.register_function2("quit",f);

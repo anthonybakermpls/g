@@ -15,9 +15,23 @@ Item::~Item()
 
 
 
-string Item::get_name(){}
-string Item::get_type(){}
-string Item::get_subtype(){}
-int Item::get_bonus(string){}
-void Item::equip(){}
-void Item::unequip(){}
+string Item::get_name()
+{
+  return "";
+}
+string Item::get_type()
+{
+  return "";
+}
+string Item::get_subtype()
+{
+  return "";
+}
+int Item::get_bonus(string)
+{
+  return 0;
+}
+void Item::equip()
+{}
+void Item::unequip()
+{}

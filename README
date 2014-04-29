@@ -1,0 +1,10 @@
+Project g
+
+
+=
+
+Testing command line only game loops and callbacks
+
+
+Note: the tinyxml2 library must have changed it's xmldocument constructor and broke version compatibility. The shared object that is in this git repo
+was built by me manually since I don't have any of the IDEs which have project files included in this repository.
