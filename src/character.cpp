@@ -85,15 +85,7 @@ void Character::reset_turn()
 
 // state functions call behavior functions
 
-void Character::wait()
-{
-  /* how to get out of this state? */
 
-  if(debug_lvl>0)
-    cout << this << ": " << "wait(); " << endl;
-
-  wander(); // or stand_still();
-}
 
 void Character::patrol_state()// do patrol behaviors
 {
@@ -126,18 +118,10 @@ void Character::sleep_state() // do sleep behaviors
 
 
 
+void Character::flee_state()
+{
 
-
-
-
-
-
-/* behavior functions can call state functions and other behavior functions */
-
-
-/* on each game tick, the character can flow through one function before
-   its turn_taken gets set to 1 and some other function is called that checks for turn_taken and returns.
-*/
+}
 
 
 
@@ -193,6 +177,11 @@ void Character::stand_still()
   /* don't move at all */
   turn_taken=1;
 }
+
+
+
+
+
 
 
 /// action behaviors - change state (but not necessarily)

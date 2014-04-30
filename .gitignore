@@ -1,4 +1,4 @@
-# Compiled source #
+﻿# Compiled source #
 ###################
 g
 *.o
@@ -10,3 +10,4 @@ obj/Debug/*
 
 *~
 *.cbTemp
+.directory

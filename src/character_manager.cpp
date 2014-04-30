@@ -22,10 +22,9 @@ Character_manager::~Character_manager()
 void Character_manager::new_character()
 {
   character_id_counter++;
-  Character* c= new Character();
+  unique_ptr<Character> c= new Character();
   glm::vec3 v(0,0,0);
   auto t = make_tuple (character_id_counter, c, v);
-
   character_list.push_back(t);
 }
 

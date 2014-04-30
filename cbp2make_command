@@ -1,2 +1,0 @@
-#!/bin/sh
-./cbp2make.linux-x86_64 -in g.cbp

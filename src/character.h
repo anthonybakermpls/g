@@ -27,23 +27,24 @@ class Character
     void reset_turn();
 
     /// basic state functions
-    void wait();
+
     void patrol_state();
     void attack_state();
     void sleep_state();
-    void flee();
+    void flee_state();
+    
 
     /// behavior functions
     //movement
+    void wait();
     void patrol();
     void follow_enemy();
     void stand_still();
     void wander();
-
-    //action
     void look_for_enemy();
     void attack_enemy();
     void sleep();
+    void flee();
 
 
 
@@ -56,7 +57,7 @@ class Character
 
     map<string, int> attributes;
     vector<Item> inventory;
-		unsigned int disposition; // mood tends toward this state
+    unsigned int disposition; // mood tends toward this state
     bool turn_taken=false; // prevents character from performing infinite loops in its states/actions
 
     typedef void (Character::*Character_fn_ptr)(void); // http://www.parashift.com/c++-faq/typedef-for-ptr-to-memfn.html

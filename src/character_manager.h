@@ -5,6 +5,7 @@
 
 
 #include <list>
+#include <memory>
 #include <string>
 #include <tuple>  // std::tuple, std::get, std::tie, std::ignore
 #include <vector>
@@ -35,7 +36,7 @@ class Character_manager
     unsigned int character_id_counter=0;
 
       // unsigned int id, Character* character, glm::vec3 position
-      list< tuple<unsigned int, Character*, glm::vec3> > character_list;
+      list< tuple<unsigned int, unique_ptr<Character>, glm::vec3> > character_list;
 };
 
 #endif // CHARACTER_MANAGER_H

@@ -130,55 +130,28 @@ int main(int argc, char** argv)
 
 
 
-  command_line.prompt();
+  command_line.prompt(); // launch own thread
+
+
 
   bool user_exit=false;
-  while(user_exit != true)
+  while(user_exit != true)  // main loop here
   {
-
-//    render_frame();
-//    time_physics_curr = glfwGetTime()*1000; // This, like the rendering, ticks every time around.
-//    physics_ptr->tick( ((float)(time_physics_curr - time_physics_prev))/1000.0, 10 );
-//    time_physics_prev = time_physics_curr;
-//    dt = (glfwGetTime()*1000) - t; // Game Clock ticks once every game_tick_ms milliseconds on average
-
-
-//    while(dt >= game_tick_ms)
-//    {
-//        dt -= game_tick_ms;
-//        time_gameclock += game_tick_ms;
-//
-//        controls.tick();
-//        world_update();
-//        game_tick();
-//
-          usleep(1000000); //1,000,000 mu s = 1 second   // 32000 mu s = 32 microseconds
-
-
-
-
-
-
-//          cout << "monster1 update: " << endl;
-//          monster_1.update();
-//          monster_1.reset_turn();
-
-
-
-
-
-
-
-
-//        fps=(renderer.get_frame())/glfwGetTime();
-//    }
-//
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    usleep(1000000); //1,000,000 mu s = 1 second   // 32000 mu s = 32 microseconds
   }
 
 
 
-  cout << "Done." << endl;
+
 
   return 0;
 }
