@@ -23,6 +23,8 @@
 #include "character_manager.h"
 #include "game.h"
 #include "level.h"
+#include "settings.h"
+
 
 
 using namespace std;
@@ -31,21 +33,21 @@ using namespace std;
 
 
 
-void getopts(int&, char** &);
 
 
 
-shared_ptr<bool> user_exit_ptr;
+
+std::shared_ptr<bool> user_exit_ptr;
 
 
-void test(){cout << "thread!" << endl;}
-void quit(vector<string>s){cout << "quitting..." << endl; exit(0);}
+void test(){std::cout << "thread!" << std::endl;}
+void quit(std::vector<std::string>s){std::cout << "quitting..." << std::endl; exit(0);}
 
 
 int main(int argc, char** argv)
 {
 
-  getopts(argc,argv);
+
 
 
   Command_line command_line;
@@ -57,11 +59,28 @@ int main(int argc, char** argv)
 
 
   cm.new_character();
+  
+    try
+    {
+//        debug_settings ds;
+//        ds.load("debug_settings.xml");
+//        ds.save("debug_settings_out.xml");
+		
+		Settings settings;		
+		settings.load();
+		settings.save();
+		
+        std::cout << "Success\n";
+    }
+    catch (std::exception &e)
+    {
+        std::cout << "Error: " << e.what() << "\n";
+    }
 
 
 
   // insert free functions into command table
-  void(*fn)(vector<string>);
+  void(*fn)(std::vector<std::string>);
   fn = quit;
   command_line.register_function("main_quit",fn);
 
@@ -87,26 +106,26 @@ int main(int argc, char** argv)
 
 
 
-  tinyxml2::XMLDocument doc;
-  doc.LoadFile( "cfg/items.xml" ); // need absolute path?
-  if(doc.ErrorID() != 0)
-  {
-    doc.PrintError();
-    return 1; // we have to bail out because our items file is broken
-  }
-
-
-
-
-  const char* c;
-  string str;
-  tinyxml2::XMLElement *levelElement = doc.FirstChildElement(); // items   //cout << levelElement->Name();
-  for (tinyxml2::XMLElement* child = levelElement->FirstChildElement(); child != NULL; child = child->NextSiblingElement())
-  {
-    c = child->FirstChildElement("name")->GetText();
-    str=c;
-    cout << "Item name: " << str << endl;
-  }
+//  tinyxml2::XMLDocument doc;
+//  doc.LoadFile( "cfg/items.xml" ); // need absolute path?
+//  if(doc.ErrorID() != 0)
+//  {
+//    doc.PrintError();
+//    return 1; // we have to bail out because our items file is broken
+//  }
+//
+//
+//
+//
+//  const char* c;
+//  string str;
+//  tinyxml2::XMLElement *levelElement = doc.FirstChildElement(); // items   //cout << levelElement->Name();
+//  for (tinyxml2::XMLElement* child = levelElement->FirstChildElement(); child != NULL; child = child->NextSiblingElement())
+//  {
+//    c = child->FirstChildElement("name")->GetText();
+//    str=c;
+//    cout << "Item name: " << str << endl;
+//  }
 
 
 //  chrono::high_resolution_clock::time_point t1 = chrono::high_resolution_clock::now();
@@ -154,29 +173,6 @@ int main(int argc, char** argv)
 
 
   return 0;
-}
-
-
-
-
-
-
-void getopts(int &a, char** &b)
-{
-  string t;
-  vector<string> vargv;
-  int i;
-  for (i=1; i<a; i++)
-  {
-    t.assign(b[i]);
-    vargv.push_back(t);
-
-    // do something with vargv
-    cout << "vargv contains:";
-    for (vector<string>::iterator it = vargv.begin() ; it != vargv.end(); ++it)
-      cout << ' ' << *it;
-    cout << '\n';
-  }
 }
 
 

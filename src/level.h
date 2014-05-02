@@ -2,14 +2,6 @@
 #define LEVEL_H
 
 
-
-
-
-using namespace std;
-
-
-
-
 class Level
 {
   public:
@@ -18,14 +10,8 @@ class Level
 
     void reset();
 
-
-
-
   protected:
   private:
-
-
-
 
 };
 

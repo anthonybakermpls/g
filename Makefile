@@ -4,9 +4,9 @@ CC = gcc
 CXX = clang++ 
 AR = ar
 LD = clang++ 
-WINDRES = windres
 
-INC = -Iinclude -Ilib -Ilib/glm/glm
+
+INC = -Iinclude -Ilib -Ilib/glm/glm -I$(WORKDIR)/lib
 CFLAGS = -std=c++11 -Wall -pthread
 RESINC = 
 LIBDIR = -L./lib
@@ -39,9 +39,16 @@ DEP_RELEASE =
 OUT_RELEASE = g
 #bin/Release/g
 
-OBJ_DEBUG = $(OBJDIR_DEBUG)/src/character.o $(OBJDIR_DEBUG)/src/character_manager.o $(OBJDIR_DEBUG)/src/command_line.o $(OBJDIR_DEBUG)/src/game.o $(OBJDIR_DEBUG)/src/item.o $(OBJDIR_DEBUG)/src/level.o $(OBJDIR_DEBUG)/src/main.o
+OBJ_DEBUG = $(OBJDIR_DEBUG)/src/character.o \
+	$(OBJDIR_DEBUG)/src/character_manager.o \
+	$(OBJDIR_DEBUG)/src/command_line.o \
+	$(OBJDIR_DEBUG)/src/game.o \
+	$(OBJDIR_DEBUG)/src/item.o \
+	$(OBJDIR_DEBUG)/src/level.o \
+	$(OBJDIR_DEBUG)/src/main.o \
+	$(OBJDIR_DEBUG)/src/settings.o \
 
-OBJ_RELEASE = $(OBJDIR_RELEASE)/src/character.o $(OBJDIR_RELEASE)/src/character_manager.o $(OBJDIR_RELEASE)/src/command_line.o $(OBJDIR_RELEASE)/src/game.o $(OBJDIR_RELEASE)/src/item.o $(OBJDIR_RELEASE)/src/level.o $(OBJDIR_RELEASE)/src/main.o
+OBJ_RELEASE = $(OBJDIR_RELEASE)/src/character.o $(OBJDIR_RELEASE)/src/character_manager.o $(OBJDIR_RELEASE)/src/command_line.o $(OBJDIR_RELEASE)/src/game.o $(OBJDIR_RELEASE)/src/item.o $(OBJDIR_RELEASE)/src/level.o $(OBJDIR_RELEASE)/src/main.o $(OBJDIR_DEBUG)/src/settings.o
 
 all: debug release
 
@@ -76,6 +83,9 @@ $(OBJDIR_DEBUG)/src/item.o: src/item.cpp
 $(OBJDIR_DEBUG)/src/level.o: src/level.cpp
 	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c src/level.cpp -o $(OBJDIR_DEBUG)/src/level.o
 
+$(OBJDIR_DEBUG)/src/settings.o: src/settings.cpp
+	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c src/settings.cpp -o $(OBJDIR_DEBUG)/src/settings.o
+	
 $(OBJDIR_DEBUG)/src/main.o: src/main.cpp
 	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c src/main.cpp -o $(OBJDIR_DEBUG)/src/main.o
 
@@ -113,6 +123,9 @@ $(OBJDIR_RELEASE)/src/item.o: src/item.cpp
 $(OBJDIR_RELEASE)/src/level.o: src/level.cpp
 	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c src/level.cpp -o $(OBJDIR_RELEASE)/src/level.o
 
+$(OBJDIR_RELEASE)/src/settings.o: src/settings.cpp
+	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c src/settings.cpp -o $(OBJDIR_RELEASE)/src/settings.o
+	
 $(OBJDIR_RELEASE)/src/main.o: src/main.cpp
 	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c src/main.cpp -o $(OBJDIR_RELEASE)/src/main.o
 
