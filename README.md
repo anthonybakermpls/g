@@ -3,4 +3,4 @@ Project g
 
 =
 
-Testing command line only game loops and callbacks
+Testing command line only loops and callbacks using function pointers.
